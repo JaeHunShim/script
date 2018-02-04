@@ -25,8 +25,8 @@
 			alert('이것은 constructor을 사용해서 자료형 유무를 파악한 것입니다.');
 		}
 		
-		/* String 객체의 메소드 사용해보기  */
-		/* length : 해당길이를 가지고 온다.
+		/* 1. String 객체의 메소드 사용해보기  */
+		/*  length : 해당길이를 가지고 온다.
 			charAt(position):position에 위치하는 문자를 리턴합니다.
 			concat(args): 매개변수로 입력한 문자열을 뒤에 붙여서 리턴한다. 
 			indexOf(searchString, poistion):앞에서부터 일치하는 문자열의 위치를 리턴한다.position 은 start위치를 말한다.
@@ -77,7 +77,7 @@
 		var array3 = new Array(10); /* 배열의 크기를 제한 */
 		var array4 = new Array(1,2,3,4,5); /* 배열에 데이터를 넣는다.*/
 		
-		/* Array객체의 메소드를 사용해보기 */
+		/* 2. Array객체의 메소드를 사용해보기 */
 		/* length: 배열의 갯수를 알아내는데 사용
 			concat(): 배열의 요소를 모두 합쳐서 배열을 만들어서 리턴함
 			join(): 배열안의 모든 요소들을 문자열로 바꾸어서 리턴한다.
@@ -109,7 +109,7 @@
 		alert(output2);
 		alert(array7)
 		
-		/* Array안의 요소 제거 하기  (따로 제거하는 객체나 함수가 없기때문에 splice를 이용해서 따로 remove 함수를 만들어서 사용 ) */
+		/* 2. Array안의 요소 제거 하기  (따로 제거하는 객체나 함수가 없기때문에 splice를 이용해서 따로 remove 함수를 만들어서 사용 ) */
 		
 		Array.prototype.remove = function(index){
 			this.splice(index, 1);
@@ -125,7 +125,7 @@
 		}
 		alert(array);
 		
-		/* Date 사용해보기  */
+		/* 3. Date 사용해보기  */
 		/* get과 set을 이루어져있고 말그래도 get은 년이나 월이나 일 등을 가지고 오고 set은 말그대로 년,일,월등을 내가 원하는 값을 넣어주는 거임 
 			사용은 자바나파이선등 다른 언어에서도 비슷하게 사용하기 때문에 에제 하나만 통해서 해봄 
 		*/
@@ -145,7 +145,7 @@
 		
 		alert('당신이 계산한 날짜는 '+current.getInterval(before)+'일전입니다./후입니다.');
 		
-		/* 반복메소드 */
+		/* 4.반복메소드 */
 		/* forEach(elt,i,array): for in 함수처럼 사용한다.  
 			map() :배열에 특정규칙을 적용해서 새로운 배열을 만들수 있다. 
 		*/
@@ -172,7 +172,7 @@
 		})
 		alert(out)
 		
-		/* 연산 메소드 */
+		/* 5. 연산 메소드 */
 		/* reduce(): 배열의 요소가 하나가 될때까지 요소를 왼쪽부터 두개씩 묶는 함수 
 			reduceRight():오른쪽부터 두개씩 묶는 함수*/
 		var array = [1,2,3,4,5];
