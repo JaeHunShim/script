@@ -10,6 +10,7 @@ JavaSrcipt Basic
   * 기본적인 for문이나 if문 while 문등은  객체 생성이나 함수 사용하면서 다시한번 볼예정이므로 완전 기초는 생략!
   * 예시를 통해서 좀더 쉽고 빠르게 접근.
   * 해당 번호에 대한 소스도 올려 실행하면 결과를 볼수 있게함.
+  * 객체에서 쓰이는 함수들은 자주 사용하는 것들 위주로 알아보고 간단히 써보는 식으로 알아감.  
 ---
 * #### 객체(Object) <object.jsp>  
   **1.for 문으로 객체 값 보기**
@@ -428,3 +429,61 @@ JavaSrcipt Basic
   		out += test+'\n';
   		out += test.trim();
   		alert(out);
+---
+* #### 브라우저 객체 (window_object.jsp)
+  **1. window 객체의 기본 메소드**
+
+      var child = window.open('','',width = 300, hegiht = 300);
+
+      child.document.write('<h1>글도 써서 같이 출력해보자<h1>')  
+      child.moveTo(0,0);
+      setInterval(function(){
+      child.moveBy(10,10);
+      },1000);
+
+  * **window.open('','',width,height):** 윈도우의 새창을 여는 사용.
+  생성할때 첫번째는 url주소 2번째는 윈도우 이름, 세번째와 네번째 파라미터는 윈도우의 크기를 지정하는데 사용할수 있다.
+  * **writhe():** html 페이지에 글자를 입력할수 있다.
+  * **moveBy(x,y):** 윈도우의 위치를 절대적으로 이동.
+  * **moveTo(x,y):** 윈도우의 위치를 상대적으로 이동.
+  * **onload():** window 객체가 로드가 완료되고 자동으로 할당한 함수를 실행하게 된다. 즉 window.onload  =function(){} 했을때에 **html에 존재하는 모든 태그가 화면에 올라간 후에 이 함수가 실행된다는 의미이다.**
+
+        <script>
+         window.onload = function(){
+    			alert('onload함수')
+    		 }
+        <script>
+        <h1>이게 젤먼저 실행됨</h1>
+        <h2>그담에 이거</h2>
+
+      제일먼저 h1,h2태그가 실행되고 window.onload함수가 실행되는 것을 볼수 있다.
+
+  **2. srcreen 객체의 기본 메소드**
+
+      var child = window.open('','',width = 300, height = 300);
+      var width = screen.width;
+      var height = screen.height;
+
+      child.moveTo(0,0);
+      child.resizeTo(width,height);
+
+      setInterval(function(){
+        child.resizeBy(-20,-20);
+        child.moveBy(10,10)
+      },1000);
+
+    * 브라우저의 화면이 아니라 운영체제 화면의 속성을 가지는 객체이다
+    * 윈도우 객체의 매소드중 하나인 resizeTo() 메소드에 스크린 객체를 이용해 만든 메소드를 파라미터로 넣어서 화면 전체에 나오게끔 하고 setInterval함수를 이용해서 1초에 -20,-20 씩 윈도우창이 줄면서 10,10씩 윈도우 창이 움직이도록 설정
+    * 실행해보면 윈도우창이 점점 줄어들면서 화면 가운데로 가는걸 볼수 있다.
+
+  **3. location 객체의 기본 메소드**
+
+      location = 'https://www.w3schools.com/';
+      location.href ='https://www.w3schools.com/';
+
+      location.assign('https://www.w3schools.com/');
+      location.replace('https://www.w3schools.com/');
+
+    * 브라우저의 주소표시줄과 관련된 객체이다. 프로토콜의 종류, 호스트 이름, 분서위치등에 대한 정보가 있다.
+    * 페이지 이동방법에는 크게 이렇게 4가지가 있는데 이중에 replace의 경우는 뒤로가기 버튼이 허용되지 않는다.
+    * 하지만 **reload()** 메소드를 사용하면 새로고침을 할수도 있다.
