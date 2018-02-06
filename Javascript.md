@@ -11,6 +11,7 @@ JavaSrcipt Basic
   * 예시를 통해서 좀더 쉽고 빠르게 접근.
   * 해당 번호에 대한 소스도 올려 실행하면 결과를 볼수 있게함.
   * 객체에서 쓰이는 함수들은 자주 사용하는 것들 위주로 알아보고 간단히 써보는 식으로 알아감.  
+  * 이벤트 객체 쪽은 JQuery쪽에서 많이 다루어볼 예정
 ---
 * #### 객체(Object) <object.jsp>  
   **1.for 문으로 객체 값 보기**
@@ -487,3 +488,179 @@ JavaSrcipt Basic
     * 브라우저의 주소표시줄과 관련된 객체이다. 프로토콜의 종류, 호스트 이름, 분서위치등에 대한 정보가 있다.
     * 페이지 이동방법에는 크게 이렇게 4가지가 있는데 이중에 replace의 경우는 뒤로가기 버튼이 허용되지 않는다.
     * 하지만 **reload()** 메소드를 사용하면 새로고침을 할수도 있다.
+---
+* #### 문서객체 (document_object.jsp)
+  * 원래 있던 태그들을 읽으며 생성하는 것을 정적으로 문서객체를 생성하는 것이라고 할수 있고 , 원래 html 페이지에는 없던 문서객체를 생성하는 것을 동적문서객체를 생성한다라고할수 있다. **쉽게 말하면 기존에 작성되어 있는 태그를 읽어들이는 것을 정적, 없는 태그를 자바스크립트를 이용해서 만드는 것을 동적이라고 이해하면 빠를 것이다.**
+
+  * 문서 객체 만들기
+    1. createElement와 createTextNode 로 객체 생성
+
+            <script>
+          	window.onload = function(){
+          		var header = document.createElement('h1');
+          		var textnode = document.createTextNode('Hello');
+          		header.appendChild(textnode);
+          		document.body.appendChild(header);
+
+          		var img = document.createElement('img');
+          		img.src = 'jaehun.jpg';
+          		img.width = 500;
+          		img.height = 300;
+              document.body.appendChild(img);
+            };
+            </script>
+        document.createElement로 동적객체를 만들고 (h1태그생성), 그안에 텍스트 노드를 만들어서 appendChild()라는 함수를 사용해서 body 태그 안에 텍스트 노드와 문서객체와 연결 시킨후 그것을 body태그에 추가 하는 작업을 한 소스이다.
+        img 경우도 마찬가지로 문서객체 생성후 태그안에 값들을 넣고 body객체에 추가해줘었을 뿐이다.
+        **document.createElement : 문서객체 생성**
+        **documnet.createTextNode : 텍스트 노드를 생성**
+        **appendChild() : 파라미터의 내용을 자식 요소를 body태그에 추가**
+    2. innerHTML로 더 쉽게 문서 객체생성
+
+            var output ='';
+
+        		output += '<ul>';
+        		output +=	'<li>Hello</li>';
+        		output +=	'<li>JavaScript</li>';
+        		output +=	'<li>JQuery</li>';
+        		output += '</ul>';
+
+        		document.body.innerHTML = output;
+            document.body.innerHTML += '<h1>Hello JavaScript</h1><br>';
+        innerHTML 을 이용해서 HTML태그로 만든 객체를 body문서 객체의 innerHTML 속성에 넣기만 하면 문서객체로 쉽게 만들수 가 있다. 그리고 복합연산자를 이용해서 더 추가할수도 있다.
+        **innerHTML:태그의 내부를 의미하는 속성 .**
+
+  * 문서 객체 가지고 오기
+    1.이미 만들어져있는 즉, 정적객체를 가지고 오는 방법
+
+        <script>
+        var header1 = document.getElementById('header-1');
+    		var header2 = document.getElementById('header-2');
+
+    		header1.innerHTML ='Header1 바꾸기';
+    		header2.innerHTML ='Header2 바꾸기';
+        <script>
+        <body>
+        <h1 id='header1'> Header1</h1>
+        <h1 id='header2'> Header2</h1>
+        <h2 id = 'remove'> Header3</h2>
+        </body>
+      document.getElementById():파리미터로된 해당아이디의 textNode를 가지고 온다.
+      여기서는 document.getElementById로 된 태그의 값을 가지고와서 innerHTML을 이용해서 태그의 내부를 다시 재정의 한것이다.
+
+  2. 배열로 가지고오기와 css스타일 바꾸기,삭제(name,TagName,style,remove)
+
+          <script>
+          var headers = document.getElementsByTagName('h1');
+          for(var i =0; i<headers.length;i++){
+            headers[i].innerHTML = '배열로 가지고와서 바꾸어보자 ';
+            headers[i].style.border ='2px solid black';
+            headers[i].style.color = 'red';
+            headers[i].style.fontFamily ='helvetica';
+            headers[i].style.backgroundColor ='pink';
+            var remove = document.getElementById('remove')
+        		document.body.removeChild(remove);
+          <script>
+          <body>
+          <h1 id='header-1'> Header1</h1>
+        	<h1 id='header-2'> Header2</h1>
+        	<h2 id = 'remove'> Header3</h2>
+          <body>
+      getElementId는  한가지 객체만 가지고 온다. 한번에 여러가지 객체를 가져올때는 이런식으로 document.getElementByName 이나 document.getElementsByTagName을 사용해서 해당 태그의 속성중 name속성이나 태그이름(ex:h1,h2,p...)으로 한번에 가지고 올수 있다.
+
+        * h1인 태그에 있는 속성을 가지고와서 headers에 넣는다
+        * 반복분을 통해서 가지고온 객체를 innerHTML을 이용해서 속성을 바꾼다.
+        * css 의 값을 정의한다.
+        * 삭제의 경우는 removeChild를 이용해서 body태그의 자식요소중에 remove라인 아이디를 가진 속성을 제거 한다.  
+---
+* #### 이벤트 처리  (event.jsp)
+      //1번
+      <script>
+        window.onload = function(){
+
+        header = document.getElementById('header')
+
+        header.onclick = function(){
+          alert('클릭하면 나오는거징~!');
+
+        header.onclick = null;
+        }
+      //2번
+        document.getElementById('headers').onclick = function(){
+        alert(this);
+        this.style.color ='red';
+        this.style.backgroundColor ='pink';
+      }
+      //3번
+      var buttona = document.getElementById('button1');
+      var buttonb = document.getElementById('button2');
+      var counta = document.getElementById('count-a');
+      var countb = document.getElementById('count-b');
+
+      buttona.onclick = function(){
+        counta.innerHTML = Number(counta.innerHTML)+1;
+      };
+      buttonb.onclick = function(){
+        countb.innerHTML = Number(countb.innerHTML)+1
+        buttona.onclick();
+      };
+
+      //4번
+      document.getElementById('join').onsubmit = function(){
+
+      //변수선언
+      var password = document.getElementById('password').value;
+      var password1 = document.getElementById('password1').value;
+      // 값 비교
+      if(password == password1){
+
+        alert('가입성공');
+      }else{
+        alert('비밀번호가 일치 하지 않습니다.')
+        return false;
+      }
+    }
+
+      //5번
+      var myheader = document.getElementById('myheader');
+
+      myheader.addEventListener('click', function() {
+        myheader.innerHTML+= '+';
+      });
+
+      }
+      function whenclick(e){
+        alert('클릭이벤트 입니다.');
+      }
+      //6번
+      function whenclick(e){
+        alert('클릭이벤트 입니다.');
+      }
+      </script>
+      </head>
+          <body>
+          <h1 id = 'header'>click</h1>
+          <h1 id = 'headers'>click</h1>
+          <button id = 'button1'>button1</button>
+          <button id = 'button2'>button2</button>
+          <h2> button a- <span id = 'count-a'></span></h2>
+          <h2> button b- <span id = 'count-b'></span></h2>
+          <h3 onclick="whenclick(event)">click</h3>
+          <h1 id = 'myheader'>click</h1>
+
+          <form id ='join'>
+            <label for='name'>이름</label>
+            <input type = 'text' name = 'name' id = 'name'/><br>
+            <label for='password'>비밀번호</label>
+            <input type = 'password' name = 'password' id = 'password'/><br>
+            <label for='password1'>비밀번호 확인</label>
+            <input type = 'password' name = 'password1' id = 'password1'/><br>
+            <input type = 'submit' value= '제출'/><br>
+          </form>
+          </body>
+
+  * 1번: 모델이벤트 처리 DOM Level0 버젼으로 기본 이벤트 모델로서 간단한 이벤트로 onclick이벤트로 id 가 headers로 된 태크에 이벤트를 추가하는 간단한 로직이다. 한번 클릭후 더이상 이이벤트가 진행되지 않도록 null값을 줌.
+  * 2번: onclick 했을때에 this 로 해당객체가 어떤객체를 사용하는지 알아볼수 있다.
+  * 3번: 이부분도 그냥 비슷한 부분으로 onclick에 대한 연습을 해본부분이다 계속해서 button1을 클릭하면 카운트가 1씩추가 button2를 클릭하면 button이 눌려서 숫자가 같이 증가하게끔 해본것 말고는 특별하게 구성한 것은 없다.
+  * 4번:Default이벤트 제거 하는 방법으로 예제로 입력양식의 유효성 검사를 해보았다. 소스를 보면 알겠지만 return 을 faulse로 주면 onsubmit에 대한 default 이벤트가 제거되어서 실행되지 않아서 submit 이 실행되지 않는 것을 볼수 있다.
+  * 5번:DOM Level2번전으로 한번에 여러가지 이벤트 리스너를 추가할수 있다. 추가적으로 캡쳐기능까지 지원하지만 많이 사용하지 않는것이 일반적이다.
+  * 6번:인라인이벤트 모델을 써본것이다. 태그안에 직접 onclick이벤트에 대한 처리를 넣었다. 이렇게 하면 클릭했을시 해당함수가 실행되게 되는 원리이다.
