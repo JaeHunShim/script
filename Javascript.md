@@ -1,10 +1,10 @@
 JavaSrcipt Basic
 ===
-####**1. JQuery가 아니라 JavaSrcipt를 공부하게 된 이유**
+#### **1. JQuery가 아니라 JavaSrcipt를 공부하게 된 이유**
   * JQuery 자체가 JavaSrcipt의 기능들을 좀더 쉽게 사용하기 위해서 만들어진 것이기 때문에 우선 기본을 먼저 어느정도 알고 넘어가야 할거 같아서 Jquery 전에 JavaSrcipt의 기본을 먼저 배우는게 맞다고 판단.(판단이 틀릴수도 있고..)
-####**2. JavaSrcipt 가 나오면서 웹이 혁신적으로 바뀜**
+#### **2. JavaSrcipt 가 나오면서 웹이 혁신적으로 바뀜**
   * JavaSrcipt가 나오기 전의 초기 웹은 변화되지 않는 적정인 글자들로만 꾸며졌다. 하지만 JavaSrcipt가 나오면서 그 내용들이 동적으로 바뀌게 되고 마우스를 클릭하는 것과 같은 이벤트 처리까지 할수 있게 되었다. 그리고 더 나아가 인터넷이 빨라지면서 웹 문서는 점점 더 많은 자료를 가질수 있게 되었고 , 그로 인해 웹은 그냥 일반 문서에 대한 개념이 아니라 어플리케이션의 모습에 더 가까워지게 되었다.
-####**3. 공부 방향**
+#### **3. 공부 방향**
   * Java나 Python 에 대한 기본 개념을 알고 있기때문에 너무 기본적인 거 보다는 JavaScript에서 지원하는 기능들에 대해 초점을 맞추고 진행할 예정이다.
   * HTML이나 JavaSrcipt 와 JQuery 등 프론드엔드 쪽은 W3schools.com 에서 객체들과 함수들을 어떤형식으로 쓰는지 잘 알려져 있으니 이쪽을 참고하면서 알아가는 것이 좋을거 같다.
   * 기본적인 for문이나 if문 while 문등은  객체 생성이나 함수 사용하면서 다시한번 볼예정이므로 완전 기초는 생략!
@@ -255,18 +255,19 @@ JavaSrcipt Basic
 
         alert(output);
 
-    해당 객체에 해당하는 메소드들이 어떤식으로 작동하는지에 대해서만 간단히 공부했다. Java 에서 쓰고 있는 기술들이랑 비슷해서 다시 한번 복습한다는 마음으로 한번씩 써보았음
-    **length :** 해당길이를 가지고 온다.
-    **charAt(position):** position에 위치하는 문자를 리턴합니다.
-    **concat(args):** 매개변수로 입력한 문자열을 뒤에 붙여서 리턴한다.
-    **indexOf(searchString, poistion):** 앞에서부터 일치하는 문자열의 위치를 리턴한다.position 은 start위치를 말한다.
-    **replace(pattern,replacement):** pattern을 replacement로 바꾼다
-    **slice(from,to):** from에서 부터 to 까지 추출해서 리턴한다.
-    **split(pattern,limit):** pattern으로 문자열을쪼개서 리턴한다. limit는 몇개를 추출할지~!
-    **substr(start,count):** start부터 count까지 문자열을 리턴한다. 공백은 해당문자열을 세는데 해당이 안된다.
-    **substring(start,end):** start부터 end전까지 문자열을 리턴한다. 공백포함
-    **toUpperCase():** 대문자로 리턴
-    **toLowerCase():** 소문자로 리턴
+  해당 객체에 해당하는 메소드들이 어떤식으로 작동하는지에 대해서만 간단히 공부했다. Java 에서 쓰고 있는 기술들이랑 비슷해서 다시 한번 복습한다는 마음으로 한번씩 써보았음
+  **length :** 해당길이를 가지고 온다.
+  **charAt(position):** position에 위치하는 문자를 리턴합니다.
+  **concat(args):** 매개변수로 입력한 문자열을 뒤에 붙여서 리턴한다.
+  **indexOf(searchString, poistion):** 앞에서부터 일치하는 문자열의 위치를 리턴한다.position 은 start위치를 말한다.
+  **replace(pattern,replacement):** pattern을 replacement로 바꾼다
+  **slice(from,to):** from에서 부터 to 까지 추출해서 리턴한다.
+  **split(pattern,limit):** pattern으로 문자열을쪼개서 리턴한다. limit는 몇개를 추출할지~!
+  **substr(start,count):** start부터 count까지 문자열을 리턴한다. 공백은 해당문자열을 세는데 해당이 안된다.
+  **substring(start,end):** start부터 end전까지 문자열을 리턴한다. 공백포함
+  **toUpperCase():** 대문자로 리턴
+  **toLowerCase():** 소문자로 리턴
+
 **2. 배열열 관련 (Array) 내장 객체의 메소드 사용.**
   * 배열 생성에는 4가지 방법이 있다.
 
